@@ -1,5 +1,5 @@
 import { getOwner } from '@ember/application';
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 import { observer } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import moment from 'moment';
@@ -18,7 +18,7 @@ moduleFor('controller:test-subject', {
 function createSubject(attrs) {
   const owner = getOwner(this);
 
-  owner.resolveRegistration('controller:test-subject').reopen(merge({
+  owner.resolveRegistration('controller:test-subject').reopen(assign({
     date: date(0),
     shortDate: format('date', 'MM/DD')
   }, attrs));
